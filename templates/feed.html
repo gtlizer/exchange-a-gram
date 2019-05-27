@@ -1,0 +1,14 @@
+<div class="container-fluid pb-5">
+    <section class="row my-5">
+        <div class="col-12">
+            <div class="row">
+                <a class="col-12 col-md-6 col-lg-4 mb-3" ng-repeat="picture in pictures" ui-sref="feedItem({ id: picture.id })">
+                    <img ng-src="{{picture.image}}">
+                </a>
+            </div>
+        </div>
+        <div class="load-more mx-auto mt-3">
+            <button type="button" class="btn btn-primary btn-lg" ng-click="loadMore()" ng-hide="meta.last_page === meta.current_page">Load More</button>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,207 @@
+html,body {
+	min-height:100vh;
+}
+
+img {
+	max-width: 100%;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.login_button{
+	font-size: 20px;
+	cursor: pointer;
+}
+
+.login_button:hover{
+	background-color:#1665C0 !important;
+	cursor: pointer;
+}
+
+.button.bg-primary:hover{
+	background-color:#1665C0 !important;
+	cursor: pointer;
+}
+
+.navigation{
+	font-size: 20px;
+}
+
+.nav-item-padding{
+	padding: 0px 20px;
+}
+
+.hero-image{
+	background-image: url("/images/hero_bg.jpeg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 90vh;
+}
+
+.hero-logo{
+	height: 72vh;
+}
+
+.upload-form{
+	background-color: #E9ECEF;
+	border-radius: 5px;
+}
+
+.form-control-file{
+	background-color: white;
+}
+
+.number{
+	width: 140px;
+	height: 140px;
+}
+
+.number-text{
+	font-size: 23px;
+}
+
+.welcome_btn img{
+	width:45px;
+	height: 40px;
+	padding-left: 5px;
+}
+
+.comments_heading{
+	font-size: 30px;
+}
+
+.comment_avatar{
+	width: 50px;
+	height:50px;
+}
+
+.comment-form{
+	width: 100vw;
+	padding: 0px 10px;
+}
+
+.comment-input{
+	flex-grow: 1;
+}
+
+.comment-author img{
+	width: 30px;
+	height:30px;
+}
+
+
+.profile-user h2{
+	font-size: 50px;
+	font-weight: 300;
+}
+
+.divider-line{
+	margin: 0px 20px;
+}
+
+.profile-username:hover{
+	color:white;
+	text-decoration: none;
+}
+
+.profile-username img{
+	width: 50px;
+	height: 50px;
+	margin-right: 10px;
+}
+
+
+
+/* ------------XS--------------- */
+/* ----------------------------- */
+@media screen and (min-width: 0px) {
+
+
+	
+}
+
+/* ------------SM--------------- */
+/* -----------MOBILE------------ */
+
+@media screen and (min-width: 400px) {
+
+
+.lead{
+	font-size: 18px;
+}
+
+.welcome_btn{
+	display: none;
+}
+
+
+}
+
+/* -------------MD-------------- */
+/* -----------TABLET------------ */
+
+@media screen and (min-width: 540px) {
+
+
+.lead{
+	font-size: 20px;
+}
+
+.welcome_btn{
+	display: none;
+}
+
+.profile-user{
+	text-align: left;
+}
+
+.feed-item-image{
+	padding: 0px;
+}
+
+.feed-item-details{
+	padding: 0px;
+}
+
+.flex-grow-section{
+	flex-grow: 1;
+}
+
+
+}
+
+/* -------------LG-------------- */
+/* -----------DESKTOP------------ */
+
+
+@media screen and (min-width: 768px) {
+
+
+.lead{
+	font-size: 24px;
+}
+
+.logout_li{
+	line-height: 44px;
+}
+
+.welcome_btn{
+	display: contents;
+}
+
+
+}
+
+/* -------------XL-------------- */
+/* -----------DESKTOP------------ */
+
+
+@media screen and (min-width: 1024px) {
+
+
+
+	
+}
+
+

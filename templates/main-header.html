@@ -1,0 +1,70 @@
+<header ng-controller="mainCtrl">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a href="#" class="navbar-brand">
+                <img src="/images/logo.png" alt="Exchange-A-Gram Logo - Go to homepage">
+            </a>
+            <button class="navbar-toggler" ng-if="$root.token" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0 align-middle" ng-if="$root.token">
+                    <li class="nav-item nav-item-padding">
+                        <a class="nav-link text-white login_button" ui-sref="feed">Feed</a>
+                    </li>
+                    <li class="nav-item nav-item-padding">
+                        <a class="nav-link text-white login_button" ui-sref="upload">Upload</a>
+                    </li>
+                    <li class="nav-item nav-item-padding">
+                        <a class="nav-link text-white login_button" ui-sref="profile({id:$root.auth.id})">Profile</a>
+                    </li>
+                    <li class="logout_li py-sm-1 py-md-1 py-lg-0">
+                        <button class="nav-item-padding bg-primary text-white border-0 login_button justify-content-start" type="button" ng-click="log_out()" ui-sref="index">
+                        Logout
+                        </button>
+                    </li>
+                </ul>
+                <ul class="navbar-nav my-2 my-lg-0 login_button text-white welcome_btn" ng-if="$root.token" ng-model="username">
+                    <li> Welcome, {{$root.auth.username}} <img ng-src="{{'https://exchangeagram.azurewebsites.net/' + $root.auth.avatar}}"></li>
+                </ul>
+            </div>
+            <ul class="navbar-nav" ng-if="!$root.token">
+                <li class="nav-item">
+                    <button class="bg-primary text-white border-0 login_button" type="button" ng-click="$root.openModal('#modal_login')">
+                        Login
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<div class="modal fade" id="modal_login" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" ng-controller="mainCtrl">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Login</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form ng-submit="log_in()">
+                    <div class="form-group">
+                        <label for="inputUsername">Username</label>
+                        <input type="text" class="form-control" id="inputUsername" aria-describedby="Input Username" ng-model="username" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword">Password</label>
+                        <input type="password" class="form-control" id="inputPassword" ng-model="password" placeholder="Password">
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Log In</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,86 @@
+<div class="container" ng-repeat="item in feedItem">
+    <div class="row my-4 mx-md-1">
+        <div class="col-12 col-md-6 feed-item-image">
+            <img ng-src="{{item.image}}">      
+        </div>
+        <div class="col-12 col-md-6 feed-item-details d-flex flex-column">
+            <div class="bg-primary text-white p-2">
+                <a ui-sref="profile({ id: item.user.id })" class="text-white profile-username">
+                    <img ng-src="https://exchangeagram.azurewebsites.net{{item.user.avatar}}"> {{item.user.username}}
+                </a>
+            </div>
+            <div class="bg-light p-2">
+                {{item.likes}} Likes
+            </div>
+            <div class="bg-white d-flex flex-column p-2 justify-content-between flex-grow-section">
+                {{item.caption}}
+                <a class="text-center mt-5 text-primary pb-1" ng-click="like_post()" ng-if="!feedItem.user_has_liked">Like This Post</a>
+                <a class="text-center mt-5 text-primary pb-1" ng-click="unlike_post()" ng-if="feedItem.user_has_liked">Unlike This Post</a>
+            </div>
+            <div class="bg-light text-center p-2">
+                <a ng-click="$root.openModal('#modal_post')">Edit This Post</a>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-12">
+            <p class="comments_heading">
+                Comments:
+            </p>
+            <ul class="list-group mb-2">
+                <li class="list-group-item d-flex align-items-center border border-secondary" ng-repeat="comment in item.comments">
+                    <div class="col-12 p-1">
+                        <div class="comment-body">
+                            <div class="comment-date text-secondary">
+                                {{comment.created_at}}
+                            </div>
+                            <div class="comment-text">
+                                {{comment.comment}}
+                            </div>
+                        </div>
+                        <div class="comment-author text-primary text-right">
+                            <a ui-sref="profile({ id: comment.user.id })">
+                                {{comment.user.username}}
+                                <img ng-src="https://exchangeagram.azurewebsites.net{{comment.user.avatar}}" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <form class="form-inline mb-5 mx-auto comment-form col-12 d-flex" ng-submit="comment_post()">
+            <img class="comment_avatar" ng-src="{{'https://exchangeagram.azurewebsites.net/' + $root.auth.avatar}}"> 
+            <div class="comment-input">
+                <input class="form-control mx-1 mr-2 w-100" placeholder="Add new comment" id="textcontrol" rows="1" ng-model="$parent.comment"></input>
+            </div>
+            <button type="submit" class="btn btn-light ml-2">Comment</button>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade" id="modal_post" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" ng-controller="feedItemCtrl">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editFeedItemTitle">Edit Post</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form ng-submit="edit_post()">
+                    <div class="form-group">
+                        <label for="inputCaption">Caption</label>
+                        <input type="text" class="form-control" rows="2" id="inputCaption" ng-model="caption" placeholder="{{item.caption}}">
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                    <div class="text-center text-danger py-2 mt-2">
+                        <a ng-click="delete_post()">Delete Forever</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <form class="mx-2 my-5 p-2 p-md-4 p-lg-5 upload-form" method="POST" action="https://exchangeagram.azurewebsites.net/api/upload" enctype="multipart/form-data">
+            <input type="hidden" name="token" id="token" value="{{$root.token}}" />
+            <input type="hidden" name="redirect" id="redirect" value="http://127.0.0.1:8080/#!/upload"/>
+            <h1 class="display-4 font-weight-light text-center px-md-3 px-lg-5">Exchange A New Gram</h1>
+            <div class="form-group">
+                <label for="selectimage">Select image</label>
+                <input type="file" class="form-control-file p-2" id="selectimage" name="image">
+            </div>
+            <div class="form-group">
+                <label for="textarea">Enter a caption:</label>
+                <textarea class="form-control" id="textarea" rows="3" name="caption"></textarea>
+                <small id="captionHelop" class="form-text text-muted" >Maximum of 2000 characters</small>
+            </div>
+            <div class="text-center pb-3">
+                <button type="submit" class="btn btn-primary" ng-click="uploadPhoto()">Upload</button>
+            </div>
+        </form>
+    </div>
+</div>
